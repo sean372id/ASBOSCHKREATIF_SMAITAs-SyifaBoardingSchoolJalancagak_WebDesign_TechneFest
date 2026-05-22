@@ -67,7 +67,7 @@ function initPricingEstimator() {
     
     document.getElementById('btnKirim').addEventListener('click', () => {
         localStorage.setItem('shared_project_data', JSON.stringify(dataKalkulasiGlobal));
-        window.open('/invoice-generator/index.html', '_blank');
+        window.open('/ASBOSCHKREATIF_SMAITAs-SyifaBoardingSchoolJalancagak_WebDesign_TechneFest/invoice-generator/index.html', '_blank');
     });
 
     hitungUlang();
