@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata Dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/icon/favicon.png">
+    <title>KaryaPro</title>
+
+    <!-- GFonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Metadata Search Engine -->
+    <meta name="description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+
+    <!-- Deskripsi Open Graph -->
+    <meta property="og:title" content="KaryaPro" />
+    <meta property="og:description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+    <meta property="og:image" content="https://sean372id.github.io/assets/og-image.png" />
+    <meta property="og:image:alt" content="Black and white line drawing of refrigerator, french door refrigerator, range, washer, fan, microwave, vaccuum, space heater and air conditioner" />
+
+    <!-- Deskripsi Twitter Card -->
+     <meta name="twitter:title" content="KaryaPro" />
+    <meta name="twitter:description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+    <meta name="twitter:url" content="https://sean372id.github.io/" />
+    <meta name="twitter:image:src" content="https://sean372id.github.io/assets/og-image.png" />
+
+    <!-- Hubungkan ke CSS -->
+<link rel="stylesheet" href="/global-style.css">
+</head>
+<body data-barba="wrapper">
+    <nav class="no-print">
+        <div class="container">
+            <nav class="navbar">
+                <div id="nav-indicator" class="nav-indicator"></div>
+                <ul class="menu-list">
+                    <a href="/index.html" class="menu-item" data-page="home">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/home1.svg');"></div>
+                            <span class="span-menu">Home</span>
+                        </div>
+                    </a>
+                    <a href="/pricing-estimator/index.html" class="menu-item" data-page="estimator">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/calc1.svg');"></div>
+                            <span>Estimator</span>
+                        </div>
+                    </a>
+                    <a href="/invoice-generator/index.html" class="menu-item" data-page="invoice">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/inv1.svg');"></div>
+                            <span>Invoice</span>
+                        </div>
+                    </a>
+                    <a href="/contract-generator/index.html" class="menu-item active" data-page="contract">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/cont1.svg');"></div>
+                            <span>Contract</span>
+                        </div>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+    <main data-barba="container">
+        <!-- Struktur Grid Kontainer Utama -->
+        <div class="container ignore-max-width">
+            <div class="calculator-container">
+                
+                <!-- BAGIAN FORM INPUT (Kiri / Atas) -->
+                <div class="contract-form-wrapper">
+                    <div class="container">
+                        <h1 class="header-title">Contract Generator</h1>
+                        <span class="header-subtitle">Hasilkan dokumen kontrak untuk melindungi pekerjaan Anda.</span>
+                    </div>
+                    <hr class="separator" />
+                    
+                    <form id="contractForm">
+                        <div class="input-grid input-grid-3">
+                            <div class="form-group">
+                                <label for="inputLogo">Logo Studio / Designer</label>
+                                <input type="file" id="inputLogo" accept="image/*">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputStudio">Nama Studio / Desainer (Pihak 1)</label>
+                                <input type="text" id="inputStudio" placeholder="Nama Studio">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputClient">Nama Klien (Pihak 2)</label>
+                                <input type="text" id="inputClient" placeholder="Nama Klien">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputProject">Nama Proyek</label>
+                                <input type="text" id="inputProject" placeholder="Nama Proyek">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputFee">Nilai Kontrak / Biaya (Rp)</label>
+                                <input type="text" id="inputFee" placeholder="Contoh: 5.000.000">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputDeadline">Batas Waktu Pekerjaan (Deadline)</label>
+                                <input type="text" id="inputDeadline">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inputScope">Cakupan Revisi (Scope of Work)</label>
+                                <textarea id="inputScope" rows="3" placeholder="Contoh: Maksimal 3 kali revisi minor. Perubahan konsep total akan dikenakan biaya tambahan."></textarea>
+                            </div>
+                        </div>
+                        <!-- PERBAIKAN: Ditambahkan type="button" agar tidak memicu reload halaman -->
+                        <button type="button" id="btnDownloadContract" class="btn-print">Cetak Kontrak / Simpan ke PDF</button>
+                    </form>
+                </div>
+
+                <!-- BAGIAN PREVIEW SURAT (Kanan / Bawah) -->
+                <div class="printable">
+                    <div class="preview-panel" id="contractContent">
+                        
+                        <!-- Header Kontrak -->
+                        <div class="contract-header">
+                            <div id="logoContainer" class="logo-container">
+                                <span class="logo-placeholder">[ Logo Studio ]</span>
+                            </div>
+                            <div class="header-meta">
+                                <strong id="p1TextTop" class="company-name">Arta Studio</strong>
+                                <span class="document-type">Dokumen Kontrak Kerja</span>
+                            </div>
+                        </div>
+
+                        <hr class="header-divider">
+
+                        <!-- Judul Kontrak -->
+                        <h3 class="contract-title">Surat Perjanjian Kerja Sama Desain</h3>
+
+                        <!-- Isi Kontrak -->
+                        <div class="contract-body">
+                            <p>Pada hari ini, Perjanjian Kerja Sama ini dibuat dan disepakati oleh dan di antara pihak-pihak berikut:</p>
+                            
+                            <ol class="parties-list">
+                                <li><strong><span id="p1Text">Arta Studio</span></strong>, selanjutnya disebut sebagai <strong>Pihak Pertama (Desainer)</strong>.</li>
+                                <li><strong><span id="p2Text">[Nama Klien]</span></strong>, selanjutnya disebut sebagai <strong>Pihak Kedua (Klien)</strong>.</li>
+                            </ol>
+
+                            <p>Kedua belah pihak sepakat untuk mengadakan kerja sama pembuatan proyek desain dengan ketentuan sebagai berikut:</p>
+
+                            <div class="contract-article">
+                                <h4>Pasal 1: Ruang Lingkup Proyek</h4>
+                                <p>Pihak Pertama sepakat untuk mengerjakan proyek berupa: <strong><span id="projectText">[Nama Proyek]</span></strong> sesuai dengan brief yang telah disepakati bersama.</p>
+                            </div>
+
+                            <div class="contract-article">
+                                <h4>Pasal 2: Biaya & Pembayaran</h4>
+                                <p>Total biaya profesional yang disepakati untuk proyek ini adalah sebesar <strong>Rp. <span id="feeText">0</span></strong>. Pembayaran dilakukan sesuai kesepakatan penagihan (invoice) yang dilampirkan terpisah.</p>
+                            </div>
+
+                            <div class="contract-article">
+                                <h4>Pasal 3: Batas Waktu & Revisi</h4>
+                                <p>Pihak Pertama berkomitmen menyelesaikan proyek ini selambat-lambatnya pada tanggal <strong><span id="deadlineText">[Tanggal Batas Waktu]</span></strong>. Ketentuan revisi disepakati sebagai berikut: <span id="scopeText">[Ketentuan Revisi]</span></p>
+                            </div>
+
+                                <div class="contract-article">
+                                    <h4>Pasal 4: Hak Cipta</h4>
+                                    <p>Hak cipta penuh atas hasil desain akan dialihkan kepada Pihak Kedua setelah Pihak Kedua melunasi seluruh total biaya yang tertera pada Pasal 2. Pihak Pertama berhak menggunakan hasil desain sebagai portofolio kerja.</p>
+                                </div>
+                        </div>
+
+                                <!-- Bagian Tanda Tangan -->
+                                <div class="signature-section">
+                            <div class="sig-box">
+                                <p>Pihak Pertama (Desainer)</p>
+                                <div class="sig-space"></div>
+                                <div class="sig-line"><strong id="p1Sig">Arta Studio</strong></div>
+                            </div>
+                            <div class="sig-box">
+                                <p>Pihak Kedua (Klien)</p>
+                                <div class="sig-space"></div>
+                                <div class="sig-line"><strong id="p2Sig">[Nama Klien]</strong></div>
+                            </div>
+                        </div>
+
+                    </div> <!-- /#contractContent -->
+                </div> <!-- /.printable -->
+
+            </div> <!-- /.calculator-container -->
+        </div> <!-- /.container -->
+    </main>
+
+    <!-- Barba.js Core & Custom Logic -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="/script/home.js"></script>
+</body>
+</html>

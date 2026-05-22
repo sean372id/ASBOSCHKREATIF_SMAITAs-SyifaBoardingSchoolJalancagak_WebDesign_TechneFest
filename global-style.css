@@ -1,0 +1,1481 @@
+:root {
+  --blue-grad: linear-gradient(to bottom, #2e44b0, #1a2a6c);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    /* line-height: 1 from style.css is overridden by 1.5 for better readability */
+    line-height: 1;
+}
+
+/* =====================================================
+   1. DEFAULT STYLES (Mobile First)
+   ===================================================== */
+
+/* --- Barba.js Page Transitions --- */
+.barba-leave-active,
+.barba-enter-active {
+    transition: opacity .5s ease-in-out;
+}
+.barba-leave-to,
+.barba-enter-from {
+    opacity: 0;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixed {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+}
+
+.highlight {
+    color: #ffffff;
+    background-color: #2e44b0;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.ignore-max-width {
+    margin-top: 60px;
+    max-width: none;
+}
+
+.separator {
+    margin: 20px 0;
+    border-top: 2px solid black;
+}
+
+/* --- Navigation --- */
+nav {
+    position: fixed;
+    top: 0;
+    /* bottom: 0; */
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    /* Some browsers might not support backdrop-filter, but it's a nice progressive enhancement */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+}
+
+.navbar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 20px;
+    background: white;
+}
+
+.nav-indicator {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--blue-grad);
+    border-radius: 15px;
+    border: 2px solid black;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item {
+    flex: 1; /* Membuat tiap menu punya lebar yang sama secara otomatis */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+.menu-list {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    margin: 0; padding: 0;
+    position: relative;
+    z-index: 1;
+    z-index: 2;
+}
+
+/* Styling Ikon (CSS Masking) */
+
+.menu-item.active { color: white; }
+.menu-item.active .icon { background-color: white; }
+
+.span-menu {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* --- Homepage Styles --- */
+header {
+    height: 100vh;
+    width: 100%;
+}
+
+.head-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background-color: #ffffff;
+    height: 40vh;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1.header-title {
+    font-size: 10vh;
+    font-weight: bold;
+}
+
+.header-subtitle {
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.kontainer {
+    position: relative;
+    width: 100%;
+    height: 500px; 
+}
+
+.background {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    font-weight: bold;
+}
+
+.background-1 {
+    /* border-width: 3px;
+    border-style: solid; 
+    border-color: rgb(0, 0, 0);
+    border-radius: 20px; */
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.background-3 {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 10%;
+    transform: scaleX(-1);
+    z-index: 1;
+}
+.background-4 {
+    display: none;
+}
+
+/* main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.section-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 200px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 50px 20px;
+}
+
+.section-title {
+    font-size: 7vw;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    font-weight: normal;
+    padding-top: 10px;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 400px;
+}
+
+.cta-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Introduction & Accordion Styles --- */
+.intro-section {
+    padding: 50px 0;
+    margin: 50px 20px;
+}
+
+.intro-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1200px; /* Batasi lebar maksimum */
+    margin: 0 auto;    /* Tengahkan grid */
+}
+
+.accordion-wrapper {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #f8fafc;
+}
+
+.accordion-image-wrapper {
+    display: none;
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.accordion-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.accordion-item {
+    border-bottom: 2px solid #e2e8f0; /* slate-200 */
+}
+
+.accordion-header {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 20px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.accordion-header:hover {
+    background-color: #eff6ff; /* blue-50 */
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    font-weight: normal;
+    transition: transform 0.3s ease-in-out;
+}
+
+.accordion-image.active {
+    opacity: 1;
+}
+
+.accordion-item.active .accordion-header .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.accordion-content p {
+    padding: 0 10px 20px 10px;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.footer-margins {
+    padding-bottom: 70px;
+}
+
+.header-margin {
+    height: 30px; /* Sesuaikan dengan tinggi header Anda */
+}
+
+
+/* --- Pricing Estimator Styles --- */
+
+.calculator-container {
+    
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 4px solid black;
+    width: 100%;
+    /* max-width: 42rem; */
+    margin: auto auto 4rem auto;
+}
+
+.calculator-title {
+    font-size: 3vw;
+    font-weight: light;
+    color: #000;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#calcForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#contractForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#formInvoice {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#formInvoice button {
+    height: 70px;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #2e44b0;
+    margin-bottom: 0.25rem;
+    border: 3px solid #000000;
+    border-radius: 15px;
+}
+
+#contractForm button {
+    height: 70px;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #2e44b0;
+    margin-bottom: 0.25rem;
+    border: 3px solid #000000;
+    border-radius: 15px;
+}
+
+#calcForm label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.25rem;
+}
+
+#contractForm label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.25rem;
+}
+
+#formInvoice label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.25rem;
+}
+
+#calcForm select,
+#calcForm input[type="number"] {
+    width: 100%;
+    padding: 0.625rem;
+    border: 3px solid #000000;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+}
+
+#contractForm select,
+#contractForm input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 3px solid #000000;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+}
+
+#contractForm select,
+#contractForm textarea{
+    width: 100%;
+    padding: 0.625rem;
+    border: 3px solid #000000;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+}
+
+#formInvoice select,
+#formInvoice textarea{
+    width: 100%;
+    padding: 0.625rem;
+    border: 3px solid #000000;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+}
+
+#formInvoice select,
+#formInvoice input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 3px solid #000000;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+}
+
+#calcForm select:focus,
+#calcForm input[type="number"]:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: rgb(59 130 246);
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+#contractForm select:focus,
+#contractForm input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: rgb(59 130 246);
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+#contractForm select:focus,
+#contractForm textarea:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: rgb(59 130 246);
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+#formInvoice select:focus,
+#formInvoice input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: rgb(59 130 246);
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+.input-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+#kuotaRevisiGratis {
+    background-color: #f0fdf4;
+    color: #060c5f;
+    font-weight: 500;
+}
+
+.price-tiers {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.price-box {
+    padding: 0.875rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.price-box.min-max {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+.price-box.min-max.max {
+    /* Adjusted border-color to match the design */
+    border-width: 2px;
+    border-style: solid; 
+    border-color: rgb(0, 0, 0);
+    background-color: #f8ebff;
+    border-color: #bc8afd;
+}
+
+.price-box.ideal {
+    background-color: #eff6ff;
+    border: 2px solid #60a5fa;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.ideal-badge {
+    position: absolute;
+    top: -0.625rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3b82f6;
+    color: white;
+    font-size: 0.5625rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+}
+
+.price-box-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.price-box.min-max .price-box-title { color: #64748b; }
+.price-box.min-max.max .price-box-title { color: #7306d9; }
+.price-box.ideal .price-box-title { color: #2563eb; }
+
+.price-box-value {
+    margin-top: 0.25rem;
+    font-weight: 900;
+}
+.price-box.min-max .price-box-value { font-size: 1rem; color: #334155; }
+.price-box.min-max.max .price-box-value { color: #4c0e92; }
+.price-box.ideal .price-box-value { font-size: 1.125rem; color: #1e3a8a; }
+
+.price-box-subtitle {
+    display: block;
+    font-size: 0.625rem;
+    margin-top: 0.125rem;
+}
+.price-box.min-max .price-box-subtitle { color: #94a3b8; }
+.price-box.min-max.max .price-box-subtitle { color: #780bf5; }
+.price-box.ideal .price-box-subtitle { color: #3b82f6; }
+
+.breakdown-container {
+    margin-top: 1.25rem;
+    background-color: #2e44b0;
+    color: white;
+    border: 3px solid #000000;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.breakdown-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.breakdown-row.total {
+    border-top: 1px dashed #fff;
+    padding-top: 0.625rem;
+}
+.breakdown-row .label { color: #fff; }
+.breakdown-row .value { font-weight: 500; color: #e2e8f0; }
+.breakdown-row.total .label { color: #fff; font-weight: 600; font-size: 1.4rem; }
+.breakdown-row.total .value { color: #fff; font-weight: 700; }
+
+.invoice-button-container {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+#btnKirim {
+    display: inline-block;
+    color: #2563eb;
+    font-weight: 900;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition-property: color;
+    transition-duration: 150ms;
+}
+#btnKirim:hover {
+    color: #1d4ed8;
+}
+
+
+
+/* =====================================================
+   2. MEDIA QUERIES (Untuk layar yang lebih besar)
+   ===================================================== */
+
+/* Tablet (Perangkat menengah, ukuran 768px ke atas) */
+
+.ignore-max-width {
+    margin-top: 130px;
+    max-width: none;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    -webkit-mask-image: var(--svg-url);
+    mask-image: var(--svg-url);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: background-color 0.3s;
+}
+
+.icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.menu-item span {
+    margin-top: 5px;
+    font-size: 2.5vw;
+    font-weight: bold;
+}
+
+/* Perubahan warna saat Aktif */
+.menu-item.active { color: white; }
+.menu-item.active .icon { background-color: white; }
+
+/* Ikon saat tidak aktif (hitam/gelap) */
+.menu-item .icon-img {
+    filter: brightness(0); 
+    transition: filter 0.3s ease;
+}
+
+/* Ikon saat menu AKTIF (berubah jadi putih) */
+.menu-item.active .icon-img {
+    filter: brightness(0) invert(1); /* Invert mengubah hitam menjadi putih */
+}
+
+.span-menu {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container-content {
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid; 
+    border-color: rgb(0, 0, 0);
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 100px;
+    width: 90%;
+    height: 120px;
+    background-color: white;
+}
+
+.contract-body {
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pdf-export .contract-body {
+    display: block !important;
+}
+
+.contract-end-group,
+.contract-article,
+.signature-section,
+.contract-header,
+.contract-title {
+    page-break-inside: avoid;
+    page-break-before: avoid;
+    page-break-after: avoid;
+    break-inside: avoid;
+    break-before: avoid;
+    break-after: avoid;
+}
+
+.preview-panel {
+    background-color: #ffffff;
+    max-width: 800px;
+    width: 100%;
+    padding: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border: 2px dashed #94a3b8;
+    font-size: 1.1rem;
+}
+
+.header-meta {
+    text-align: right;
+}
+
+.company-name {
+    font-size: 1.2rem;
+    display: block;
+}
+
+.document-type {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.header-divider {
+    border: 0;
+    border-top: 2px solid #1a1a1a;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Judul */
+.contract-title {
+    text-align: center;
+    font-size: 16pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Isi Dokumen (Dipaksa vertikal ke bawah) */
+.contract-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contract-body p {
+    margin-bottom: 15px;
+    text-align: justify;
+    width: 100%;
+}
+
+/* Mengatur list Pihak 1 dan Pihak 2 agar pasti berjejer ke bawah */
+.parties-list {
+    margin-bottom: 25px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column; 
+}
+
+.parties-list li {
+    margin-bottom: 10px;
+    display: list-item; /* Mengembalikan kodrat list agar turun ke bawah */
+}
+
+.contract-article {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signature-section {
+    display: flex;
+    justify-content: space-between; /* Membuat Pihak 1 di kiri mentok, Pihak 2 di kanan mentok */
+    margin-top: 50px;              /* Memberi jarak atas dari isi kontrak */
+    width: 100%;
+}
+
+/* Mengatur kotak tanda tangan (opsional, agar lebih rapi) */
+.sig-box {
+    text-align: center; /* Membuat teks nama & jabatan rata tengah */
+    width: 40%;         /* Mengatur lebar kotak tanda tangan agar seimbang */
+}
+
+/* Mengatur ruang kosong untuk tanda tangan */
+.sig-space {
+    height: 80px;       /* Memberikan ruang vertikal untuk tanda tangan fisik/digital */
+}
+
+/* Mengatur garis bawah nama */
+.sig-line {
+    border-top: 1px solid #1a1a1a;
+    padding-top: 5px;
+}
+
+/* body {
+    background-color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #334155;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+} */
+
+.invoice-container {
+    background-color: #ffffff;
+    max-width: 800px;
+    width: 100%;
+    
+    /* Batasan tinggi minimal menyerupai tinggi kertas A4 */
+    min-height: 297mm; 
+    padding: 50px;
+    box-sizing: border-box;
+    
+    /* Aktifkan Flexbox secara Vertikal */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Helper Class */
+.text-right { text-align: right; }
+.font-mono { font-family: Courier, Monaco, monospace; font-weight: 600; }
+.valign-top { vertical-align: top; }
+
+/* Komponen Atas (Header) */
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 24px;
+}
+
+.invoice-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #1e293b;
+    margin: 0 0 2px 0;
+}
+
+.invoice-number {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 0;
+}
+
+.vendor-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.vendor-label {
+    font-size: 11px;
+    color: #64748b;
+    margin: 2px 0 0 0;
+}
+
+/* Informasi Metadata Klien */
+.invoice-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+}
+
+.meta-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px 0;
+}
+
+.client-name, .due-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 0;
+}
+
+/* Penataan Tabel Item */
+.table-responsive { width: 100%; }
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 24px 0;
+}
+
+.invoice-table thead tr {
+    border-bottom: 2px solid #cbd5e1;
+}
+
+.invoice-table th {
+    padding: 12px 6px;
+    color: #475569;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.col-desc { text-align: left; }
+.col-amount { width: 130px; }
+
+.invoice-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.invoice-table td {
+    padding: 16px 6px;
+    line-height: 1.5;
+}
+
+.item-title {
+    display: block;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 3px;
+}
+
+.item-desc {
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Komponen Bawah (Footer) */
+.invoice-main-content {
+    flex-grow: 1; /* Mengisi semua ruang kosong yang tersedia */
+}
+
+/* Komponen Bawah (Footer) */
+.invoice-footer {
+    margin-top: auto; /* Memaksa footer menempel ke bagian paling bawah kontainer */
+    padding-top: 30px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    align-items: flex-end;
+}
+
+/* Kotak Ringkasan Metode Bayar */
+.payment-method-box {
+    background-color: #f8fafc;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+}
+
+.payment-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin: 0 0 6px 0;
+}
+
+.payment-details {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-line; /* Menjaga baris baru dari textarea */
+}
+
+/* Akumulasi Harga Penagihan */
+.summary-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.total-row {
+    border-top: 1px solid #cbd5e1;
+    padding-top: 8px;
+    margin-top: 4px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.grand-total {
+    font-size: 16px;
+    color: #2563eb;
+}
+
+.invoice-bottom-bar {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.invoice-footer {
+    margin-top: auto; 
+    padding-top: 30px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.invoice-main-content {
+    /* Mengizinkan konten atas menghabiskan ruang yang tersedia */
+    flex: 1 0 auto; 
+}
+/* =====================================================
+   2. MEDIA QUERIES (Untuk layar yang lebih besar)
+   Gunakan min-width untuk menyesuaikan layout ke layar besar
+   ===================================================== */
+@media (min-height: 700px) {
+    .head-container {
+        height: 30vh;
+    }
+    h1.header-title {
+        font-size: 8vw;
+    }
+    .header-subtitle {
+        font-size: 20px;
+    }
+}
+
+
+/* Tablet (Perangkat menengah, ukuran 768px ke atas) */
+@media (min-width: 768px) {
+    .menu-item { height: 90px; }
+    .menu-item span { font-size: 14px; }
+    .icon { width: 32px; height: 32px; }
+    .ignore-max-width {
+        margin-top: 130px;
+        max-width: none;
+    }
+    .background-3 {
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: 35%;
+        /* transform: translate(-25%); */
+        z-index: 2;
+    }
+
+    .section-content {
+        padding: 0 2rem;
+        flex-direction: row;
+    }
+
+    .section-content:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .accordion-image-wrapper {
+        display: block;
+        min-height: 500px;
+    }
+
+    .background-4 {
+        display: block;
+        width: auto;
+        height: 100vh;
+        right: -50.1px;
+        z-index: 1;
+    }
+    .input-grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .input-grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calculator-results .price-tiers {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* Ensure the main title and subtitle span full width before the flex layout for form/results */
+    .calculator-container > h1.header-title,
+    .calculator-container > .header-subtitle,
+    .calculator-container > .separator {
+        width: 100%;
+        margin-bottom: 1.5rem; /* Add some space below them */
+    }
+
+    #calcForm {
+        flex: 1; /* Allow form to grow and shrink */
+        min-width: 300px; /* Minimum width for the form */
+    }
+
+    .calculator-results {
+        flex: 1; /* Allow results to grow and shrink */
+        min-width: 300px; /* Minimum width for the results */
+    }
+}
+
+/* Desktop (Perangkat besar, ukuran 992px ke atas) */
+@media (min-width: 992px) {
+    .ignore-max-width {
+        margin-top: 160px;
+        max-width: none;
+    }
+    .calculator-container {
+        display: flex;
+        gap: 2rem; /* Space between form and results */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .calculator-form-wrapper {
+        flex: 1; /* Allow the form section to take up available space */
+        min-width: 400px; /* Ensure it has a reasonable minimum width */
+    }
+
+    .price-tiers {
+        flex: 1; /* Allow the results section to take up available space */
+        min-width: 400px; /* Ensure it has a reasonable minimum width */
+        display: block; /* Override grid for price-tiers on desktop to allow flex parent to control layout */
+    }
+
+    .price-tiers > .calculator-results {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .price-box {
+        width: 100%; /* Make price boxes take full width within their flex container */
+        margin-bottom: 5px;
+    }
+
+    nav {
+        position: fixed;
+        bottom: auto;
+    }
+
+    .desktop-hide {
+        display: none;
+    }
+
+    h1.header-title {
+        font-size: 5vw;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 4vw;
+    }
+
+    .footer-margins {
+        padding-bottom: 0;
+    }
+
+    .header-margin {
+        height: 150px; /* Sesuaikan dengan tinggi header Anda */
+    }
+
+}
+
+/* Extra Large Desktop (Layar sangat besar, 1200px ke atas) */
+@media (min-width: 1200px) {
+    .section-title {
+        font-size: 3vw;
+    }
+
+    .section-content {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* --- Footer Styles --- */
+.site-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Print */
+@media print {
+            .navbar,
+            .no-print,
+            .calculator-form-wrapper,
+            .contract-form-wrapper,
+            .btn-print,
+            .head-container {
+                display: none !important;
+            }
+            /* Menghilangkan margin atas dari kontainer utama saat mencetak */
+            .ignore-max-width {
+                margin-top: 0 !important;
+                padding: 0 !important;
+            }
+            html, body {
+                width: 210mm !important;
+                min-height: 297mm !important;
+                background: none !important;
+                background-color: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 auto !important;
+            }
+            .print-area {
+                width: 210mm !important;
+                max-width: 210mm !important;
+                margin: 0 auto !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+            .invoice-body {
+                width: 210mm !important;
+                max-width: 210mm !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+            }
+            .printable {
+                width: 210mm !important;
+                max-width: 210mm !important;
+                margin: 0 auto !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+            tr {
+                page-break-inside: avoid;
+            }
+
+            
+
+    .contract-body {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+    }
+
+    .preview-panel {
+        box-shadow: none;
+        padding: 0;
+        max-width: 210mm !important;
+        width: 210mm !important;
+        margin: 0 auto !important;
+        border-radius: 0;
+        box-shadow: none;    /* Hilangkan bayangan saat dicetak */
+        border-radius: 0;    /* Hilangkan lengkungan sudut */
+        
+        /* Trik Utama: Berikan padding minimal 2-3 cm agar teks tidak mentok ke atas/bawah kertas */
+        padding: 15mm 20mm; /* Margin vertikal 1.5cm, horizontal 2cm */
+        box-sizing: border-box;
+        border: none;
+    }
+
+    .contract-article,
+    .signature-section,
+    .contract-header,
+    .contract-title {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .signature-section {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+    }
+
+    .contract-header,
+    .contract-title {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* Pengaturan Ukuran Halaman (A4 Portrait) */
+    @page {
+        size: A4 portrait;
+        margin:0cm; /* Batas margin aman cetak printer */
+    }
+
+    .contract-article:last-of-type, .closing-text {
+        break-before: page;       /* Memaksa pindah ke halaman 2 */
+        margin-top: 30mm !important; /* Memberikan jarak 3 cm dari atas kertas Halaman 2 */
+        display: block;
+    }
+
+    /* Memastikan teks berwarna hitam pekat saat dicetak */
+    body, p, span, strong, h3, h4 {
+        color: #000000 !important;
+    }
+
+    .document-type {
+        color: #4b5563 !important;
+    }
+
+    /* Mencegah pemotongan halaman yang buruk */
+    h3, h4 {
+        page-break-after: avoid;
+    }
+
+    p, li {
+        orphans: 3; /* Minimal baris yang tertinggal di bawah halaman */
+        widows: 3;  /* Minimal baris yang naik ke halaman baru */
+    }
+
+    .signature-section {
+        margin-top: 80px; /* Ruang ekstra sebelum tanda tangan saat dicetak */
+    }
+
+    .invoice-body {
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        width: 210mm !important;
+        max-width: 210mm !important;
+        box-sizing: border-box !important;
+    }
+
+.invoice-container {
+        width: 210mm !important;
+        max-width: 210mm !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 auto !important;
+        padding: 15mm 20mm !important; /* Margin vertikal 1.5cm, horizontal 2cm */
+        box-sizing: border-box !important;
+        position: static !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* 4. Pastikan konten invoice mengalir secara normal saat dicetak */
+    .invoice-main-content {
+        margin-bottom: 0 !important;
+    }
+
+    .invoice-footer {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin-top: 30px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .payment-method-box {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .calculator-container {
+    background-color: white;
+    padding: 0;
+    border-radius: 0;
+    border: 0 solid rgb(255, 255, 255);
+    width: 100%;
+    /* max-width: 42rem; */
+    margin: 0 0 0 0;
+}
+
+}
+
+.pdf-export .invoice-container,
+.pdf-export .print-area,
+.pdf-export .invoice-body,
+.pdf-export .printable,
+.pdf-export .preview-panel {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+.pdf-export .invoice-container,
+.pdf-export .preview-panel {
+    /* Padding sekarang diatur di opsi html2pdf untuk konsistensi */
+    padding: 15mm 20mm !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.pdf-export .invoice-body {
+    padding: 0 !important;
+}

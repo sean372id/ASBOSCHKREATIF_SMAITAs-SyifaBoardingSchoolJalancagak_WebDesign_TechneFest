@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/icon/favicon.png">
+    <title>KaryaPro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <meta name="description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+
+    <meta property="og:title" content="KaryaPro" />
+    <meta property="og:description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+    <meta property="og:image" content="https://sean372id.github.io/assets/og-image.png" />
+    <meta property="og:image:alt" content="Black and white line drawing of refrigerator" />
+
+    <link rel="stylesheet" href="/global-style.css">
+</head>
+<body data-barba="wrapper">
+
+    <nav class="no-print">
+        <div class="container">
+            <nav class="navbar">
+                <div id="nav-indicator" class="nav-indicator"></div>
+                <ul class="menu-list">
+                    <a href="/index.html" class="menu-item" data-page="home">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/home1.svg');"></div>
+                            <span class="span-menu">Home</span>
+                        </div>
+                    </a>
+                    <a href="/pricing-estimator/index.html" class="menu-item" data-page="estimator">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/calc1.svg');"></div>
+                            <span>Estimator</span>
+                        </div>
+                    </a>
+                    <a href="/invoice-generator/index.html" class="menu-item active" data-page="invoice">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/inv1.svg');"></div>
+                            <span>Invoice</span>
+                        </div>
+                    </a>
+                    <a href="/contract-generator/index.html" class="menu-item" data-page="contract">
+                        <div class="icon-wrapper">
+                            <div class="icon" style="--svg-url: url('/assets/icon/cont1.svg');"></div>
+                            <span>Contract</span>
+                        </div>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    
+
+    <main data-barba="container">
+        <div class="container ignore-max-width">
+            <div class="calculator-container">
+                <div class="calculator-form-wrapper"> <!-- WRAPPER BARU: MULAI -->
+                <div class="container">
+                    <h1 class="header-title">Invoice Generator</h1>
+                    <span class="header-subtitle">Buat dan kelola invoice profesional dengan mudah dan cepat.</span>
+                </div>
+                <hr class="separator" />
+                <form id="formInvoice">
+                    <div class="input-grid input-grid-3">
+                        <div class="form-group">
+                            <label for="inputDari">Nama Studio / Anda</label>
+                            <input type="text" id="inputDari">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputUntuk">Nama Klien</label>
+                            <input type="text" id="inputUntuk" placeholder="Contoh: PT. klien" value="Nama Klien">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"  for="inputNoInvoice">Nomor Invoice</label>
+                            <input type="text" id="inputNoInvoice" value="#INV/2026/001">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputJatuhTempo">Jatuh Tempo</label>
+                            <input type="date" id="inputJatuhTempo">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputRevisiGratis">Revisi Gratis</label>
+                            <input type="number" id="inputRevisiGratis" value="2">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputRevisiTotal">Total Tuntutan</label>
+                            <input type="number" id="inputRevisiTotal" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputHargaJasa">Penyesuaian Harga (Rp)</label>
+                            <input type="number" id="inputHargaJasa" value="1200000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputHargaRevisi">Harga Tambahan Revisi</label>
+                            <input type="number" id="inputHargaRevisi" value="150000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputPajak">Pajak PPN (%)</label>
+                            <input type="number" id="inputPajak" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="inputMetodeBayar">Metode Pembayaran</label>
+                            <textarea id="inputMetodeBayar" rows="2" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="btnDownloadInvoice">
+                    Cetak / Simpan PDF
+                    </button>
+                </form>
+                
+            </div>
+            <div class="printable"><div class="invoice-body"><div class="invoice-container print-area">
+    
+    <!-- BAGIAN ATAS: Identitas & Deskripsi Biaya -->
+    <div class="invoice-main-content">
+        
+        <!-- Header Invoice -->
+        <div class="invoice-header">
+            <div class="header-left">
+                <h1 class="invoice-title">INVOICE</h1>
+                <p id="viewNoInvoice" class="invoice-number">#INV/2026/001</p>
+            </div>
+            <div class="header-right">
+                <!-- ID viewDari disiapkan sebagai penampung text/logo dari input file -->
+                <p id="viewDari" class="vendor-name">Nama Anda / Studio</p>
+                <p class="vendor-label">Penyedia Jasa Desain</p>
+            </div>
+        </div>
+
+        <!-- Meta Grid Informasi Klien -->
+        <div class="invoice-meta-grid">
+            <div class="meta-box">
+                <p class="meta-label">Ditujukan Kepada</p>
+                <p id="viewUntuk" class="client-name">Nama Klien</p>
+            </div>
+            <div class="meta-box text-right">
+                <p class="meta-label">Tanggal Jatuh Tempo</p>
+                <p id="viewJatuhTempo" class="due-date">-</p>
+            </div>
+        </div>
+
+        <!-- Tabel Item Pembiayaan Berdasarkan Skema Revisi Form -->
+        <div class="table-responsive">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th class="col-desc">Deskripsi Layanan & Ketentuan</th>
+                        <th class="col-amount text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelBodyInvoice">
+                    <!-- Item 1: Harga Jasa Utama -->
+                    <tr>
+                        <td>
+                            <span class="item-title">Penyesuaian Harga Jasa Utama</span>
+                            <span class="item-desc">Biaya pengerjaan proyek desain sesuai dengan kesepakatan brief awal.</span>
+                        </td>
+                        <td class="text-right valign-top font-mono">Rp 1.200.000</td>
+                    </tr>
+                    <!-- Item 2: Breakdown Hak Revisi dari Form -->
+                    <tr>
+                        <td>
+                            <span class="item-title">Kuota & Paket Revisi Dokumentasi</span>
+                            <span class="item-desc">
+                                Termasuk <strong id="viewRevisiGratis">2</strong>x Revisi Gratis. 
+                                Sisa batasan maksimum <strong id="viewRevisiTambahan">2</strong>x revisi berbayar dikenakan biaya per revisi.
+                            </span>
+                        </td>
+                        <td class="text-right valign-top font-mono">Rp 0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- BAGIAN BAWAH: Metode Bayar & Kalkulasi Akhir -->
+    <div class="invoice-footer">
+        <div class="footer-grid">
+            
+            <!-- Kiri: Metode Pembayaran (Dari Input Textarea) -->
+            <div class="footer-left">
+                <div class="payment-method-box">
+                    <p class="payment-label">Metode Pembayaran</p>
+                    <p id="viewMetodeBayar" class="payment-details">—</p>
+                </div>
+            </div>
+            
+            <!-- Kanan: Rincian Kalkulasi Harga Finansial -->
+            <div class="footer-right-summary">
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="viewSubtotal" class="font-mono">Rp 1.200.000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>PPN (<span id="viewPajakPersen">0</span>%):</span>
+                        <span id="viewPajakNominal" class="font-mono">Rp 0</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total Tagihan:</span>
+                        <span id="viewTotalTagihan" class="grand-total font-mono">Rp 1.200.000</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+</div>
+</div>
+        </div>
+    </div>
+        
+
+    
+            
+    
+    </main>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="/script/home.js"></script>
+</body>
+</html>

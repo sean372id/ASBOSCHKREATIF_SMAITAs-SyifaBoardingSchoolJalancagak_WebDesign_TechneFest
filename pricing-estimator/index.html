@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata Dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/icon/favicon.png">
+    <title>Creative Freelancer Toolkit</title>
+
+    <!-- GFonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Metadata Search Engine -->
+    <meta name="description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+
+    <!-- Deskripsi Open Graph -->
+    <meta property="og:title" content="Creative Freelancer Toolkit" />
+    <meta property="og:description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+    <meta property="og:image" content="https://sean372id.github.io/assets/og-image.png" />
+    <meta property="og:image:alt" content="Black and white line drawing of refrigerator, french door refrigerator, range, washer, fan, microwave, vaccuum, space heater and air conditioner" />
+
+    <!-- Deskripsi Twitter Card -->
+     <meta name="twitter:title" content="Creative Freelancer Toolkit" />
+    <meta name="twitter:description" content="Merupakan tools yang bermanfaat untuk para creative freelancer. Satu halaman untuk semua kebutuhan bisnis kreator freelance — gratis, tanpa daftar, langsung pakai" />
+    <meta name="twitter:url" content="https://sean372id.github.io/" />
+    <meta name="twitter:image:src" content="https://sean372id.github.io/assets/og-image.png" />
+
+    <!-- Hubungkan ke CSS -->
+    <link rel="stylesheet" href="/global-style.css">
+</head>
+<body data-barba="wrapper">
+    <nav>
+        <div class="container">
+            <nav class="navbar">
+              <div id="nav-indicator" class="nav-indicator"></div>
+              <ul class="menu-list">
+                <a href="/index.html" class="menu-item" data-page="home">
+                  <div class="icon-wrapper">
+                    <div class="icon" style="--svg-url: url('/assets/icon/home1.svg');"></div>
+                    <span class="span-menu">Home</span>
+                  </div>
+                </a>
+                <a href="/pricing-estimator/index.html" class="menu-item active" data-page="estimator">
+                  <div class="icon-wrapper">
+                    <div class="icon" style="--svg-url: url('/assets/icon/calc1.svg');"></div>
+                    <span>Estimator</span>
+                  </div>
+                </a>
+                <a href="/invoice-generator/index.html" class="menu-item" data-page="invoice">
+                  <div class="icon-wrapper">
+                    <div class="icon" style="--svg-url: url('/assets/icon/inv1.svg');"></div>
+                    <span>Invoice</span>
+                  </div>
+                </a>
+                <a href="/contract-generator/index.html" class="menu-item" data-page="contract">
+                  <div class="icon-wrapper">
+                    <div class="icon" style="--svg-url: url('/assets/icon/cont1.svg');"></div>
+                    <span>Contract</span>
+                  </div>
+                </a>
+              </ul>
+            </nav>
+        </div>
+    </nav>
+    <main data-barba="container">
+        <!-- <div class="kontainer fixed">
+            <div class="background background-1"></div>
+            <img class="background background-2" src="/assets/svg/bg.svg" alt="Z-Index 2">
+            <img class="background background-3" src="/assets/svg/bg.svg" alt="Z-Index 2">
+            <img class="background background-4" src="/assets/svg/bg.svg" alt="Z-Index 2">
+          </div> -->
+        <!-- <div class="container head-container">
+          
+        </div> -->
+
+        <div class="container ignore-max-width">
+            <div class="calculator-container">
+                <div class="calculator-form-wrapper"> <!-- WRAPPER BARU: MULAI -->
+                    <div class="container">
+                        <h1 class="header-title">Pricing Estimator</h1>
+                        <span class="header-subtitle">Alat untuk membantu Anda menghitung estimasi biaya proyek.</span>
+                    </div>
+                    <hr class="separator" />
+                    <form id="calcForm">
+                        <div class="input-grid input-grid-2">
+                            <div>
+                                <label class="form-label" for="jenisPelayanan">Jenis Pelayanan</label>
+                                <select id="jenisPelayanan">
+                                    <option value="UI/UX Design">UI/UX Design (Web/Mobile)</option>
+                                    <option value="Graphic Design">Graphic Design (Sosmed Kit)</option>
+                                    <option value="Logo & Branding">Logo & Branding</option>
+                                    <option value="Motion Graphics">Motion Graphics / 2D Anim</option>
+                                    <option value="Video Editing">Video Editing (Reels/YouTube)</option>
+                                    <option value="Web Development">Web Development (Fullstack)</option>
+                                    <option value="Illustration">Illustration & Art</option>
+                                    <option value="Content Writing">Copywriting / Content Writing</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="tujuanPelayanan">Tujuan Pelayanan</label>
+                                <select id="tujuanPelayanan">
+                                    <option value="1.0">Penggunaan Pribadi (Normal)</option>
+                                    <option value="1.5">Komersial / UMKM (x1.5)</option>
+                                    <option value="2.5">Startup / Perusahaan (x2.5)</option>
+                                    <option value="4.0">Eksklusif / Hak Milik Penuh (x4.0)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-grid input-grid-3">
+                            <div>
+                                <label class="form-label" for="lamaPengerjaan">Lama Kerja (Jam)</label>
+                                <input type="number" id="lamaPengerjaan" value="10" min="1">
+                            </div>
+                            <div>
+                                <label class="form-label" for="kuotaRevisiGratis">Kuota Revisi Gratis</label>
+                                <input type="number" id="kuotaRevisiGratis" value="2" min="0">
+                            </div>
+                            <div>
+                                <label class="form-label"  for="jumlahRevisi">Total Tuntutan Revisi</label>
+                                <input type="number" id="jumlahRevisi" value="4" min="0">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Tingkat Kesulitan: <span id="labelEditing" class="slider-val">Sedang</span></label>
+                            <input type="range" id="tingkatEditing" min="1" max="3" step="1" value="2" class="styled-slider">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Level Pengalaman: <span id="labelPengalaman" class="slider-val">Menengah</span></label>
+                            <input type="range" id="levelPengalaman" min="1" max="3" step="1" value="2" class="styled-slider">
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="targetMargin">Target Margin Profit (%)</label>
+                            <input type="number" id="targetMargin" value="20" min="0">
+                        </div>
+                    </form>
+                </div> <!-- WRAPPER BARU: SELESAI -->
+
+                <div class="price-tiers">
+                    <div class="calculator-results"> <!-- New wrapper div for results -->
+                        <div class="price-tiers">
+                            <div class="price-box min-max">
+                                <p class="price-box-title">Harga Minimum</p>
+                                <p id="hargaMin" class="price-box-value">Rp 0</p>
+                                <span class="price-box-subtitle">(Modal / Tanpa Margin)</span>
+                            </div>
+                            <div class="price-box ideal">
+                                <span class="ideal-badge">Ideal</span>
+                                <p class="price-box-title">Rekomendasi</p>
+                                <p id="hargaRek" class="price-box-value">Rp 0</p>
+                                <span id="labelMarginPersen" class="price-box-subtitle">(Target Margin +20%)</span>
+                            </div>
+                            <div class="price-box min-max max">
+                                <p class="price-box-title">Harga Maksimum</p>
+                                <p id="hargaMax" class="price-box-value">Rp 0</p>
+                                <span class="price-box-subtitle">(Bantalan Negosiasi)</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-container">
+                            <p class="breakdown-title">
+                                <span>&#x1F4CB;</span> Breakdown Komponen Biaya (Harga Rekomendasi)
+                            </p>
+                            <div class="breakdown-row">
+                                <span class="label">Total Harga Jasa Dasar:</span>
+                                <span id="bdJasaDasar" class="value">Rp 0</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span class="label">Total Harga Revisi:</span>
+                                <span id="bdRevisi" class="value">Rp 0</span>
+                            </div>
+                            <div class="breakdown-row total">
+                                <span class="label">Margin Keuntungan Bersih:</span>
+                                <span id="bdMargin" class="value">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <div class="invoice-button-container">
+                            <button id="btnKirim">
+                                buatkan invoice
+                            </button>
+                        </div>
+                    </div> <!-- End of new wrapper div -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Barba.js Core -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="/script/home.js"></script>
+</body>
+</html>
