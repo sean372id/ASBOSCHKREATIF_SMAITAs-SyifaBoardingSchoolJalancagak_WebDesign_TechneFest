@@ -1334,7 +1334,7 @@ h1.header-title::-moz-selection { /* For Firefox */
 @media (min-width: 992px) {
 
     .head-container {
-        padding-left: 5vw;
+        padding-left: 8vw;
     }
     .ignore-max-width {
         margin-top: 160px;
