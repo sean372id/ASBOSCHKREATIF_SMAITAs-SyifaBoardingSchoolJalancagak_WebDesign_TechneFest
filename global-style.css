@@ -1443,6 +1443,27 @@ img.logo-preview {
     font-size: 0.9rem;
 }
 
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-trigger {
+    display: flex;
+    align-items: center;
+}
+
+img.footer-image {
+    height: 40px;
+}
+
+.logo-name{
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+
 /* Print */
 @media print {
             .navbar,
