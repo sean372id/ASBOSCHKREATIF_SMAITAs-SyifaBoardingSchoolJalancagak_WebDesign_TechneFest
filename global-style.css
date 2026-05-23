@@ -588,11 +588,11 @@ h1.header-title::-moz-selection { /* For Firefox */
 
 .price-box.min-max {
     background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
+    border: 3px solid #000000;
 }
 .price-box.min-max.max {
     /* Adjusted border-color to match the design */
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid; 
     border-color: rgb(0, 0, 0);
     background-color: #f8ebff;
@@ -601,7 +601,7 @@ h1.header-title::-moz-selection { /* For Firefox */
 
 .price-box.ideal {
     background-color: #eff6ff;
-    border: 2px solid #60a5fa;
+    border: 3px solid #60a5fa;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     position: relative;
 }
@@ -1389,7 +1389,7 @@ img.logo-preview {
 
     .price-box {
         width: 100%; /* Make price boxes take full width within their flex container */
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     nav {
