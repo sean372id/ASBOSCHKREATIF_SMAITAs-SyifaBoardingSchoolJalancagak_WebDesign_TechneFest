@@ -986,6 +986,12 @@ h1.header-title::-moz-selection { /* For Firefox */
     display: list-item; /* Mengembalikan kodrat list agar turun ke bawah */
 }
 
+.contract-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .contract-article {
     margin-top: 25px;
     display: flex;
@@ -1243,7 +1249,7 @@ h1.header-title::-moz-selection { /* For Firefox */
 }
 
 img.logo-preview {
-    height: 32pt;
+    height: 50pt;
     width: auto;
 }
 /* =====================================================
