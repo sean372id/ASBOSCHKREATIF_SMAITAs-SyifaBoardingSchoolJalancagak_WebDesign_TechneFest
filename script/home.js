@@ -67,7 +67,7 @@ function initPricingEstimator() {
     
     document.getElementById('btnKirim').addEventListener('click', () => {
         localStorage.setItem('shared_project_data', JSON.stringify(dataKalkulasiGlobal));
-        window.open('/ASBOSCHKREATIF_SMAITAs-SyifaBoardingSchoolJalancagak_WebDesign_TechneFest/invoice-generator/index.html', '_blank');
+        window.open('https://sean372id.github.io/ASBOSCHKREATIF_SMAITAs-SyifaBoardingSchoolJalancagak_WebDesign_TechneFest/invoice-generator/index.html', '_blank');
     });
 
     hitungUlang();
@@ -344,6 +344,90 @@ function initAccordion() {
     }
 }
 
+function initHomepageAnimations() {
+    // Guard clause to ensure this only runs on the homepage
+    const homeHeader = document.querySelector('header .head-container');
+    if (!homeHeader) return;
+
+    // --- Header Title Animation ---
+    const title = document.querySelector('h1.header-title');
+    if (title && !title.dataset.animated) {
+        const originalHTML = title.innerHTML;
+        // Split by space or <br> tag, keeping the delimiters
+        const words = originalHTML.split(/(\s+|<br.*?>)/);
+        let newHTML = '';
+        let delay = 0;
+        words.forEach(word => {
+            if (word.trim().length > 0 && !word.includes('<br')) {
+                newHTML += `<span class="word-wrapper"><span class="word" style="animation-delay: ${delay}s">${word}</span></span>`;
+                delay += 0.05;
+            } else {
+                newHTML += word; // Keep spaces and <br>
+            }
+        });
+        title.innerHTML = newHTML;
+        title.dataset.animated = 'true'; // Prevent re-animation on resize/re-init
+    }
+
+    // --- Scroll Animations ---
+    const revealElements = document.querySelectorAll('.reveal');
+    if (revealElements.length === 0) return;
+
+    // Clean up classes from previous page navigations
+    document.body.classList.remove('animation-timeline-supported', 'animation-timeline-unsupported');
+
+    if (CSS.supports('animation-timeline: view()')) {
+        document.body.classList.add('animation-timeline-supported');
+    } else {
+        document.body.classList.add('animation-timeline-unsupported');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
+}
+
+// --- Haptic Feedback Logic ---
+function triggerHapticFeedback(duration = 10) {
+    // Check if the Vibration API is supported
+    if ('vibrate' in navigator) {
+        try {
+            navigator.vibrate(duration);
+        } catch (e) {
+            // Could fail if user has disabled it, etc.
+            console.log("Haptic feedback failed.", e);
+        }
+    }
+}
+
+function initHapticFeedback() {
+    const hapticElements = document.querySelectorAll(
+        // Tombol di homepage, menu navigasi, dan tombol aksi lainnya
+        '.section-content .cta-button, .menu-item, #btnKirim, #btnDownloadInvoice, #btnDownloadContract'
+    );
+
+    hapticElements.forEach(el => {
+        // Prevent adding listeners multiple times on Barba transitions
+        if (el.dataset.hapticInit) return;
+
+        el.addEventListener('mouseenter', () => triggerHapticFeedback(5)); // Subtle feedback on hover
+        el.addEventListener('click', () => triggerHapticFeedback(20));     // More distinct feedback on click
+        
+        el.dataset.hapticInit = 'true';
+    });
+}
+
 // --- Main Logic ---
 document.addEventListener('DOMContentLoaded', () => {
     const menuPositions = {};
@@ -398,6 +482,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initInvoiceGenerator();
         initContractGenerator();
         initAccordion();
+        initHomepageAnimations();
+        initHapticFeedback();
     }
 
     // 4. Inisialisasi Barba.js

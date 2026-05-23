@@ -15,6 +15,11 @@ body {
     line-height: 1;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* =====================================================
    1. DEFAULT STYLES (Mobile First)
    ===================================================== */
@@ -158,6 +163,19 @@ h1.header-title {
     font-weight: bold;
 }
 
+/* Custom selection style for header title */
+h1.header-title::selection {
+    color: #2e44b0; /* Accent blue */
+    background-color: transparent; /* Remove default background */
+    text-decoration: underline;
+    text-decoration-color: #2e44b0;
+    text-decoration-thickness: 2px;
+}
+h1.header-title::-moz-selection { /* For Firefox */
+    color: #2e44b0;
+    background-color: transparent;
+}
+
 .header-subtitle {
     margin-top: 10px;
     font-weight: normal;
@@ -248,7 +266,19 @@ h1.header-title {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.section-content .cta-button:hover {
+    background-color: #2e44b0; /* Primary blue */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(46, 68, 176, 0.3);
+}
+
+.section-content .cta-button:active {
+    background-color: #1a2a6c; /* Darker blue */
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(46, 68, 176, 0.2);
 }
 
 /* --- Introduction & Accordion Styles --- */
@@ -679,6 +709,109 @@ h1.header-title {
 }
 
 
+
+/* =====================================================
+   NEW: ANIMATION STYLES
+   ===================================================== */
+
+/* --- Header Load Animation --- */
+.header-title .word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.header-title .word {
+    display: block;
+    transform: translateY(110%);
+    animation: slide-up-word 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-up-word {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.head-container .header-subtitle {
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fade-up-subtitle 0.8s ease-out forwards;
+    /* Delay will be handled by JS for sequencing */
+    animation-delay: 0.6s; 
+}
+
+@keyframes fade-up-subtitle {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-subtitle .highlight {
+    /* Override default highlight style for animation */
+    background-color: transparent;
+    color: #000000; /* Start as black */
+    padding: 2px 5px; /* Keep padding to prevent layout shift */
+    font-weight: bold; /* Keep font-weight */
+    animation: fade-in-highlight 0.5s ease-in forwards;
+    animation-delay: 1s; /* After subtitle appears */
+}
+
+@keyframes fade-in-highlight {
+    to {
+        background-color: #2e44b0;
+        color: #ffffff;
+    }
+}
+
+/* --- Scroll-Triggered Animations --- */
+@keyframes fade-up {
+    from { opacity: 0; filter: blur(5px); transform: translateY(30px); }
+    to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+    from { opacity: 0; filter: blur(5px); transform: translateX(-40px); }
+    to { opacity: 1; filter: blur(0); transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+    from { opacity: 0; filter: blur(5px); transform: translateX(40px); }
+    to { opacity: 1; filter: blur(0); transform: translateX(0); }
+}
+
+/* Default state for all reveal elements */
+.reveal {
+    opacity: 0;
+}
+
+/* If animation-timeline is supported */
+.animation-timeline-supported .reveal {
+    animation: auto linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+.animation-timeline-supported .reveal-fade-up { animation-name: fade-up; }
+.animation-timeline-supported .reveal-fade-in-left { animation-name: fade-in-left; }
+.animation-timeline-supported .reveal-fade-in-right { animation-name: fade-in-right; }
+
+/* Fallback for JS IntersectionObserver */
+.animation-timeline-unsupported .reveal {
+    filter: blur(5px);
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s ease-out;
+}
+.animation-timeline-unsupported .reveal-fade-up { transform: translateY(30px); }
+.animation-timeline-unsupported .reveal-fade-in-left { transform: translateX(-40px); }
+.animation-timeline-unsupported .reveal-fade-in-right { transform: translateX(40px); }
+
+.animation-timeline-unsupported .reveal.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0, 0);
+}
 
 /* =====================================================
    2. MEDIA QUERIES (Untuk layar yang lebih besar)
@@ -1214,6 +1347,19 @@ h1.header-title {
         flex: 1; /* Allow the results section to take up available space */
         min-width: 400px; /* Ensure it has a reasonable minimum width */
         display: block; /* Override grid for price-tiers on desktop to allow flex parent to control layout */
+    }
+
+    /* --- Hover Effects for Desktop --- */
+    .section-content .section-image {
+        transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .section-content:hover .section-image {
+        transform: translateX(15px);
+    }
+
+    .section-content:nth-child(odd):hover .section-image {
+        transform: translateX(-15px);
     }
 
     .price-tiers > .calculator-results {
