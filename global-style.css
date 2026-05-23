@@ -1332,6 +1332,10 @@ h1.header-title::-moz-selection { /* For Firefox */
 
 /* Desktop (Perangkat besar, ukuran 992px ke atas) */
 @media (min-width: 992px) {
+
+    .head-container {
+        margin-left: 5vw;
+    }
     .ignore-max-width {
         margin-top: 160px;
         max-width: none;
