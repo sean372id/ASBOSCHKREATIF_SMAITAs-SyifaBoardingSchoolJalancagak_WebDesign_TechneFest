@@ -1241,6 +1241,11 @@ h1.header-title::-moz-selection { /* For Firefox */
     /* Mengizinkan konten atas menghabiskan ruang yang tersedia */
     flex: 1 0 auto; 
 }
+
+img.logo-preview {
+    height: 3rem;
+    width: auto;
+}
 /* =====================================================
    2. MEDIA QUERIES (Untuk layar yang lebih besar)
    Gunakan min-width untuk menyesuaikan layout ke layar besar
