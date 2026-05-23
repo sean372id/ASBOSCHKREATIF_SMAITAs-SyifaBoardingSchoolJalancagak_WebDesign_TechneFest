@@ -1243,7 +1243,7 @@ h1.header-title::-moz-selection { /* For Firefox */
 }
 
 img.logo-preview {
-    height: 3rem;
+    height: 0.5rem;
     width: auto;
 }
 /* =====================================================
