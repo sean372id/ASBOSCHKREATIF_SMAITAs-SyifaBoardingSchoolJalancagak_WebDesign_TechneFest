@@ -69,6 +69,10 @@ a {
     border-top: 2px solid black;
 }
 
+.blue {
+    color: #2e44b0;
+}
+
 /* --- Navigation --- */
 nav {
     position: fixed;
@@ -165,10 +169,10 @@ h1.header-title {
 
 /* Custom selection style for header title */
 h1.header-title::selection {
-    color: #2e44b0; /* Accent blue */
-    background-color: transparent; /* Remove default background */
+    background-color: #2e44b0; /* Accent blue */
+    color: #ffffff; /* Remove default background */
     text-decoration: underline;
-    text-decoration-color: #2e44b0;
+    text-decoration-color: #ffffff;
     text-decoration-thickness: 2px;
 }
 h1.header-title::-moz-selection { /* For Firefox */
